@@ -1,7 +1,6 @@
 import { createConnection } from 'typeorm'
 import UserRoutes from './UserRoutes'
-import ShippingRoutes from './ShippingRoutes'
-import LogsRoutes from './LogsRoutes'
+import ShippingRoutes from './InterviewRoutes'
 import { Error } from '../models/Errors'
 
 
@@ -12,7 +11,6 @@ export default (app:any) => {
         
         new UserRoutes(app)
         new ShippingRoutes(app)
-        new LogsRoutes(app)
 
 
         app.use((req, res) => {
