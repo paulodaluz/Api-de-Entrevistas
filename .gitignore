@@ -3,4 +3,3 @@ src/**/*.js
 src/**/*.js.map
 build
 logs
-js
