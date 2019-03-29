@@ -12,11 +12,10 @@ export class User{
 
     @Column()
     password: string
+    
+    @Column()
+    write: boolean
 
     @Column()
-    write: boolean = false
-
-    @Column()
-    read: boolean = false
-
+    read: boolean
 }

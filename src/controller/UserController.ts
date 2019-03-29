@@ -19,6 +19,12 @@ export async function SaveUser(request: Request, response: Response) {
     var newUser = new User()
     newUser.username = request.body.username
     newUser.password = hash
+    newUser.write = request.body.write
+    if(request.body.write){
+        newUser.read = true
+    }else{
+        newUser.read = request.body.read
+    }
 
     if (!newUser) {
         response.status(400).json({err: 'User Invalid'});
