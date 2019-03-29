@@ -14,3 +14,8 @@ export async function deleteInterview(request: Request, response: Response) {
 export async function searchInterview(request: Request, response: Response) {
     response.send("ok")
 }
+
+export async function searchUserInterviews(request: Request, response: Response) {
+//Olhar aprenas de um determiando usuário
+    response.send("ok")
+}
