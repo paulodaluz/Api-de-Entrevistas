@@ -14,11 +14,12 @@ export default class InterviewRouter {
 
     InterviewRouter(){
 
-        this._app.post("/newInterview", basicAuth, newInterview);
-        this._app.put("/editInterview", basicAuth, editInterview)
-        this._app.delete("/deleteInterview/:id", basicAuth, deleteInterview );
-        this._app.get("/searchAllInterviews", basicAuth, searchAllInterview);
-        this._app.get("/searchInterview/:user", basicAuth, searchUserInterviews );
+        this._app.post("/newInterview", basicAuth, writeAcess, newInterview);
+        this._app.put("/editInterview", basicAuth, writeAcess,editInterview)
+        this._app.delete("/deleteInterview/:id", basicAuth, writeAcess,deleteInterview );
+        this._app.get("/searchAllInterviews", basicAuth, readAcess,searchAllInterview);
+        this._app.get("/searchInterview/:user", basicAuth, readAcess,searchUserInterviews );
+        this._app.get("/searchInterview", basicAuth, searchUserInterviews );
 
     }
 }
