@@ -7,8 +7,6 @@ import { InterviewDeleted } from "../entity/InterviewDeleted";
 import { validation } from "../models/informationValidation";
 
 
-var err = new Error();
-
 export async function newInterview (request: Request, response: Response) {
     
     //Create a conection with database
@@ -38,6 +36,10 @@ export async function newInterview (request: Request, response: Response) {
     //Shows the user the created interview
     response.status(201).send(newInterview)
 
+}
+
+export async function editInterview(request: Request, response: Response) {
+    response.send("OK")
 }
 
 export async function deleteInterview(request: Request, response: Response) {
