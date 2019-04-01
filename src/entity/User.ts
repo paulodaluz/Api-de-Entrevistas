@@ -8,7 +8,7 @@ export class User{
     id:number
 
     @Column()
-    username: string
+    userName: string
 
     @Column()
     password: string
