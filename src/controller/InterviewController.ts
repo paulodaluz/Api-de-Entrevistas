@@ -68,6 +68,15 @@ export async function searchAllInterview(request: Request, response: Response) {
 }
 
 export async function searchUserInterviews(request: Request, response: Response) {
-//Olhar aprenas de um determiando usuário
-    response.send("ok")
+    var user = request.params.id 
+    const interviewRepository = getManager().getRepository(Interview);
+    var interviews;
+    
+    if(user){
+        interviews = await interviewRepository.find({ where: {entrevistador : user}, relations:["entrevistador"]});
+    }else{
+        interviews = await interviewRepository.find({ where: {entrevistador : request.body.entrevistador}, relations:["entrevistador"]});
+    }
+    
+    response.status(200).json(interviews)
 }
