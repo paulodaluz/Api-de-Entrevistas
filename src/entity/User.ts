@@ -1,6 +1,7 @@
 import 'reflect-metadata';
 import { Entity, PrimaryGeneratedColumn, Column, OneToOne, JoinColumn, OneToMany } from 'typeorm';
 import { Interview } from './Interview';
+import { InterviewDeleted } from './InterviewDeleted';
 
 @Entity()
 export class User{
@@ -22,4 +23,7 @@ export class User{
 
     @OneToMany(type => Interview, interview => interview.entrevistador)
     interview: Interview[]
+
+    @OneToMany(type => InterviewDeleted, interviewDeleted => interviewDeleted.usuarioExcluidor)
+    interviewDeleted: InterviewDeleted[]
 }

@@ -26,7 +26,7 @@ export async function deleteInterview(request: Request, response: Response) {
     const interviewRepository = getManager().getRepository(Interview);
 
     //Find the interview in the database and save it in the variable dataInterview
-    const dataInterview = await interviewRepository.findOne(request.params.id);
+    const dataInterview = await interviewRepository.findOne(request.params.id,{relations:["entrevistador"]});
 
     //If the interview is not found it will return the default error to the user
     if (!dataInterview) {
@@ -44,6 +44,7 @@ export async function deleteInterview(request: Request, response: Response) {
     const interviewDeletedRepository = getManager().getRepository(InterviewDeleted);
     
     var deletedInterview = await interviewDeletedRepository.create(dataInterview);
+    console.log(dataInterview)
 
     deletedInterview.usuarioExcluidor = request.body.entrevistador;
 
@@ -67,4 +68,3 @@ export async function searchUserInterviews(request: Request, response: Response)
 //Olhar aprenas de um determiando usuário
     response.send("ok")
 }
-

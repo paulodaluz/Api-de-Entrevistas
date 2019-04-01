@@ -33,6 +33,5 @@ module.exports = async (req, res, next) => {
     }
 
     req.body.entrevistador = user.id
-    console.log(`O ${req.body.entrevistador} realizou uma operação`)
     next();
 }
