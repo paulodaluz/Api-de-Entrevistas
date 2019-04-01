@@ -32,6 +32,8 @@ module.exports = async (req, res, next) => {
         return res.status(401).json(new Error().model(401,'Invalid Authentication Credentials'));
     }
 
+    console.log(`${user.id} ${user.username}: ${user.write}`)
     req.body.entrevistador = user.id
+    req.body.cache = user.id
     next();
 }
