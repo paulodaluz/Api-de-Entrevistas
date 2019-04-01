@@ -11,7 +11,7 @@ async function _authenticate({ username, password }) {
     }
 
     if (await bcrypt.compare(password, user.password)){
-        return true
+        return user
     }
 
 }
@@ -32,5 +32,7 @@ module.exports = async (req, res, next) => {
         return res.status(401).json(new Error().model(401,'Invalid Authentication Credentials'));
     }
 
+    req.body.entrevistador = user.id
+    console.log(`O ${req.body.entrevistador} realizou uma operação`)
     next();
 }
