@@ -39,7 +39,19 @@ export async function newInterview (request: Request, response: Response) {
 }
 
 export async function editInterview(request: Request, response: Response) {
-    response.send("OK")
+    //Create a conection with database
+    const interviewRepository = getManager().getRepository(Interview);
+
+    //It takes the validation function and the errors that it returns and saves in the variable errors
+    var errors = new validation().validUser(request);
+
+    //If you have errors it returns them to the user
+    if (errors) {
+        response.status(400).json(errors);
+        return;
+    };
+
+
 }
 
 export async function deleteInterview(request: Request, response: Response) {
