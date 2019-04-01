@@ -2,7 +2,7 @@ import { Request } from "express";
 import { } from "express-validator";
 
 
-export class validacao {
+export class validation {
 
     validUser(request: Request) {
 

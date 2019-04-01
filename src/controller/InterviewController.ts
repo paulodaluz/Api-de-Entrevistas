@@ -1,19 +1,34 @@
 import {Request, Response} from "express";
-
+import {  } from "express-validator";
 import { Error } from '../models/Errors'
 import { getManager } from "typeorm";
 import { Interview } from "../entity/Interview";
-import { InterviewDeleted } from "../entity/InterviewDeleted"
+import { InterviewDeleted } from "../entity/InterviewDeleted";
+import { validation } from "../models/informationValidation";
 
 
 var err = new Error();
 
 export async function newInterview (request: Request, response: Response) {
+    
+    //Create a conection with database
     const interviewRepository = getManager().getRepository(Interview);
 
-    
+    //Pega a função validacao e os erros que ela retorna e guarda na variavel erros
+    var errors = new validation().validUser(request);
+
+    if (errors) {
+        response.status(400).json(errors);
+        return;
+    };
+
     const newInterview = await interviewRepository.create(request.body)
 
+    //If the interview is not found it will return the default error to the user
+    if (!newInterview) {
+        response.status(404).json(new Error().model(404, "Erro na requisição, verifique os dados e tente novamente"));
+        return;
+    }
 
 
     await interviewRepository.save(newInterview)
@@ -22,6 +37,7 @@ export async function newInterview (request: Request, response: Response) {
 }
 
 export async function deleteInterview(request: Request, response: Response) {
+
     //Create a conection with database
     const interviewRepository = getManager().getRepository(Interview);
 
