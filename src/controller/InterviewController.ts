@@ -22,20 +22,24 @@ export async function newInterview (request: Request, response: Response) {
 }
 
 export async function deleteInterview(request: Request, response: Response) {
-    //Cria uma conexão com o banco
+    //Create a conection with database
     const interviewRepository = getManager().getRepository(Interview);
 
-    //Acha o cliente no banco de dados e guarda na variavel dados cliente
+    //Find the interview in the database and save it in the variable dataInterview
     const dataInterview = await interviewRepository.findOne(request.params.id);
 
-    //Se o cliente não for encontrado irá retornar o erro padrão ao usuário
+    //If the interview is not found it will return the default error to the user
     if (!dataInterview) {
         response.status(404).json("")
         response.send();
         return;
     }
-    //Deleta o cliente e retorna uma mensagem de sucesso ao usuário
+
+    //Deletes the interview
     await interviewRepository.delete({ id: request.params.id });
+
+    //returns a success message to the user
+    response.send("Entrevista excluída com sucesso");
 
     const interviewDeletedRepository = getManager().getRepository(InterviewDeleted);
     
@@ -45,8 +49,6 @@ export async function deleteInterview(request: Request, response: Response) {
 
     await interviewDeletedRepository.save(deletedInterview);
 
-    response.send("Entrevista excluída com sucesso");
-    console.log("Changed table interview successfully!");
 }
 
 export async function searchAllInterview(request: Request, response: Response) {
