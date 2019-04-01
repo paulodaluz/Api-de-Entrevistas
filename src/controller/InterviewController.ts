@@ -51,7 +51,23 @@ export async function editInterview(request: Request, response: Response) {
         return;
     };
 
+    //Creating a new interview
+    const newInterview = await interviewRepository.create(request.body);
 
+    //Find the interview is guard her in a variable
+    const interview = await interviewRepository.findOne(request.params.id);
+
+    //update the interview
+    await interviewRepository.update({ id: request.params.id }, request.body);
+
+    //If the interview is not found it will return the default error to the user
+    if (!interview) {
+        response.status(404).json(new Error().model(404, "Erro na requisição, verifique os dados e tente novamente"));
+        return;
+    }
+
+    //return interview updated to user
+    response.send(newInterview);
 }
 
 export async function deleteInterview(request: Request, response: Response) {
