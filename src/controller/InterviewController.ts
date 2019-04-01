@@ -13,7 +13,7 @@ export async function newInterview (request: Request, response: Response) {
     const interviewRepository = getManager().getRepository(Interview);
 
     //It takes the validation function and the errors that it returns and saves in the variable errors
-    var errors = new validation().validUser(request);
+    var errors = new validation().validForm(request);
 
     //If you have errors it returns them to the user
     if (errors) {
@@ -39,11 +39,12 @@ export async function newInterview (request: Request, response: Response) {
 }
 
 export async function editInterview(request: Request, response: Response) {
+
     //Create a conection with database
     const interviewRepository = getManager().getRepository(Interview);
 
     //It takes the validation function and the errors that it returns and saves in the variable errors
-    var errors = new validation().validUser(request);
+    var errors = new validation().validForm(request);
 
     //If you have errors it returns them to the user
     if (errors) {
@@ -105,6 +106,7 @@ export async function deleteInterview(request: Request, response: Response) {
 }
 
 export async function searchAllInterview(request: Request, response: Response) {
+
     const interviewRepository = getManager().getRepository(Interview);
     const interviews = await interviewRepository.find({relations:["entrevistador"]});
 
@@ -117,6 +119,7 @@ export async function searchAllInterview(request: Request, response: Response) {
 }
 
 export async function searchUserInterviews(request: Request, response: Response) {
+    
     var user = request.params.id 
     const interviewRepository = getManager().getRepository(Interview);
     var interviews;
