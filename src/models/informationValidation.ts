@@ -17,15 +17,15 @@ export class validation {
     
         //If have error, return error
         if (error) {
+
             return error;
-            console.log("Errors were found.")
+
         }
     
         //If dont have any error, return null
         return null;
-        console.log("No error found.")
-    }
 
+    }
 
     MessagePrefix = "O campo"; 
     MessageSufix = "deve ser preenchido.";
@@ -68,13 +68,14 @@ export class validation {
 
         //If have errors, return errors to user
         if (error) {
+
             return error;
-            console.log("Errors were found.")
+            
         }
 
         //If dont have any error, return null
         return null;
-        console.log("No error found.")
+
     }
 
 }
