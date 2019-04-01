@@ -1,7 +1,7 @@
-import * as express from 'express'
-import * as bodyParser from 'body-parser'
-import routes from '../routes/routes'
-import * as expressValidator from 'express-validator'
+import * as express from 'express';
+import * as bodyParser from 'body-parser';
+import routes from '../routes/routes';
+import * as expressValidator from 'express-validator';
 
 
 const app = express();
