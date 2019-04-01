@@ -17,7 +17,7 @@ export async function SaveUser(request: Request, response: Response) {
     var hash = await bcrypt.hash(request.body.password,10);
 
     var newUser = new User()
-    newUser.username = request.body.username
+    newUser.userName = request.body.username
     newUser.password = hash
     newUser.write = request.body.write
     if(request.body.write){
