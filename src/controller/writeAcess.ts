@@ -8,7 +8,7 @@ module.exports = async (req, res, next) => {
     const user = await userRepository.findOne({where: {id : req.body.cache}});
 
     if(!user.write){
-        return res.status(401).json(new Error().model(401,'Access Denied'));
+        return res.status(401).json(new Error().model(401, 'Acesso negado'));
     }
 
     next()

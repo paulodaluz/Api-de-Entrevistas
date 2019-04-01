@@ -7,10 +7,10 @@ export class validation {
     validUser(request: Request) {
 
         //Data Validation
-        request.assert("userName", "User Name is required.").notEmpty();
-        request.assert("password", "Password is required.").notEmpty();
-        request.assert("write", "Writen function is required and need to be answered with ´´true´´ or ´´false´´").notEmpty();
-        request.assert("read", "Read function is required and need to be answered with ´´true´´ or ´´false´´").notEmpty();
+        request.assert("username", "Nome de usuário é obrigatório.").notEmpty();
+        request.assert("password", "Senha é obrigatória.").notEmpty();
+        request.assert("write", "A função de escrita é necessária e precisa ser respondida com ´´true´´ ou ´´false´´").notEmpty();
+        request.assert("read", "A função de leitura é necessária e precisa ser respondida com ´´true´´ ou ´´false´´").notEmpty();
     
         //Checks if you have an error and if you have them in the error variable
         var error = request.validationErrors();
