@@ -30,8 +30,7 @@ export async function deleteInterview(request: Request, response: Response) {
 
     //If the interview is not found it will return the default error to the user
     if (!dataInterview) {
-        response.status(404).json("")
-        response.send();
+        response.status(404).json(new Error().model(404, "Erro na requisição, verifique os dados e tente novamente"));
         return;
     }
 
@@ -41,12 +40,16 @@ export async function deleteInterview(request: Request, response: Response) {
     //returns a success message to the user
     response.send("Entrevista excluída com sucesso");
 
+    //Create a conection with database
     const interviewDeletedRepository = getManager().getRepository(InterviewDeleted);
     
+    //Get the previously deleted interview
     var deletedInterview = await interviewDeletedRepository.create(dataInterview);
 
+    //Get the interviewer name and save it to the database
     deletedInterview.usuarioExcluidor = request.body.entrevistador;
 
+    //Save the deleted interview in a table of deleted interviews
     await interviewDeletedRepository.save(deletedInterview);
 
 }
