@@ -1,5 +1,5 @@
-import 'reflect-metadata'
-import { Entity, PrimaryGeneratedColumn, Column, OneToOne, JoinColumn } from 'typeorm'
+import 'reflect-metadata';
+import { Entity, PrimaryGeneratedColumn, Column, OneToOne, JoinColumn } from 'typeorm';
 import { Interview } from './Interview';
 
 @Entity()
@@ -9,7 +9,7 @@ export class User{
     id:number
 
     @Column()
-    userName: string
+    username: string
 
     @Column()
     password: string

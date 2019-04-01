@@ -8,7 +8,7 @@ export class validacao {
 
         //Data Validation
         request.assert("userName", "User Name is required.").notEmpty();
-        request.assert("password", "Password is required.");
+        request.assert("password", "Password is required.").notEmpty();
         request.assert("write", "Writen function is required and need to be answered with ´´true´´ or ´´false´´").notEmpty();
         request.assert("read", "Read function is required and need to be answered with ´´true´´ or ´´false´´").notEmpty();
     

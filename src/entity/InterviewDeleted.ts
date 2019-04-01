@@ -1,14 +1,14 @@
 import 'reflect-metadata';
-import { Entity, PrimaryGeneratedColumn, Column, OneToOne } from 'typeorm';
+import { Entity, PrimaryGeneratedColumn, Column, OneToOne, CreateDateColumn } from 'typeorm';
 import { User } from './User';
 
 @Entity()
-export class Interview{
+export class InterviewDeleted {
 
-    @PrimaryGeneratedColumn()
-    id:number
+    @Column()
+    id: number
 
-    @OneToOne(type => User, user => user.interview) 
+    @OneToOne(type => User, user => user.interview)
     entrevistador: User;
 
     @Column()
@@ -16,7 +16,7 @@ export class Interview{
 
     @Column()
     statusAvaliacao: string
-    
+
     @Column()
     disponibilidade: string
 
@@ -97,4 +97,10 @@ export class Interview{
 
     @Column()
     observacoes: string
+
+    @CreateDateColumn()
+    dataExclusao: string
+
+    @OneToOne(type => User, user => user.interview) 
+    usuarioExcluidor: User;
 }
