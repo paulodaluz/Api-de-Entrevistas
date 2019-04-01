@@ -1,5 +1,5 @@
 import 'reflect-metadata'
-import { Entity, PrimaryGeneratedColumn, Column, OneToOne, JoinColumn } from 'typeorm'
+import { Entity, PrimaryGeneratedColumn, Column, OneToOne, JoinColumn, OneToMany } from 'typeorm'
 import { Interview } from './Interview';
 
 @Entity()
@@ -9,7 +9,7 @@ export class User{
     id:number
 
     @Column()
-    userName: string
+    username: string
 
     @Column()
     password: string
@@ -20,7 +20,6 @@ export class User{
     @Column()
     read: boolean
 
-    @OneToOne(type => Interview, interview => interview.entrevistador) // specify inverse side as a second parameter
-    @JoinColumn()
-    interview: Interview;
+    @OneToMany(type => Interview, interview => interview.entrevistador)
+    interview: Interview[]
 }

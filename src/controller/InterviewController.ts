@@ -10,8 +10,9 @@ var err = new Error();
 export async function newInterview (request: Request, response: Response) {
     const interviewRepository = getManager().getRepository(Interview);
 
-    //const newInterview = await createInterview(request)
+    
     const newInterview = await interviewRepository.create(request.body)
+
 
 
     await interviewRepository.save(newInterview)
