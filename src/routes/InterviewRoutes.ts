@@ -1,7 +1,7 @@
-import { newInterview, deleteInterview, searchInterview, searchUserInterviews} from "../controller/InterviewController";
+import { newInterview, deleteInterview, searchAllInterview, searchUserInterviews} from "../controller/InterviewController";
 
 const basicAuth = require('../controller/BasicAuth')
-export default class ShippingRouter {
+export default class InterviewRouter {
 
     _app;
 
@@ -14,7 +14,7 @@ export default class ShippingRouter {
 
         this._app.post("/newInterview", basicAuth, newInterview)
         this._app.delete("/deleteInterview", basicAuth, deleteInterview )
-        this._app.get("/searchInterview", basicAuth, searchInterview)
+        this._app.get("/searchInterview", basicAuth, searchAllInterview)
         this._app.get("/searchInterview/:user", basicAuth, searchUserInterviews )
 
     }

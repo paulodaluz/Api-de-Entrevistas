@@ -1,5 +1,5 @@
 import 'reflect-metadata'
-import { Entity, PrimaryGeneratedColumn, Column, OneToOne } from 'typeorm'
+import { Entity, PrimaryGeneratedColumn, Column, OneToOne, ManyToOne, JoinColumn } from 'typeorm'
 import { User } from './User'
 
 @Entity()
@@ -8,8 +8,8 @@ export class Interview{
     @PrimaryGeneratedColumn()
     id:number
 
-    @OneToOne(type => User , entity => entity.id)
-    entrevistador: User
+    @OneToOne(type => User, user => user.interview) 
+    user: User;
 
     @Column()
     candidato: string
