@@ -20,7 +20,7 @@ export class User{
     @Column()
     read: boolean
 
-    @OneToOne(type => Interview, interview => interview.user) // specify inverse side as a second parameter
+    @OneToOne(type => Interview, interview => interview.entrevistador) // specify inverse side as a second parameter
     @JoinColumn()
     interview: Interview;
 }

@@ -1,5 +1,5 @@
 import 'reflect-metadata'
-import { Entity, PrimaryGeneratedColumn, Column, OneToOne, ManyToOne, JoinColumn } from 'typeorm'
+import { Entity, PrimaryGeneratedColumn, Column, OneToOne } from 'typeorm'
 import { User } from './User'
 
 @Entity()
@@ -9,13 +9,13 @@ export class Interview{
     id:number
 
     @OneToOne(type => User, user => user.interview) 
-    user: User;
+    entrevistador: User;
 
     @Column()
     candidato: string
 
     @Column()
-    statusAvalicao: string
+    statusAvaliacao: string
     
     @Column()
     disponibilidade: string
@@ -27,7 +27,7 @@ export class Interview{
     dataEntrevista: string
 
     @Column()
-    conhecimetoVaga: string
+    conhecimentoVaga: string
 
     @Column()
     conhecidos: string

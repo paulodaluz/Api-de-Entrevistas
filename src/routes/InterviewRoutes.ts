@@ -14,7 +14,7 @@ export default class InterviewRouter {
 
         this._app.post("/newInterview", basicAuth, newInterview)
         this._app.delete("/deleteInterview", basicAuth, deleteInterview )
-        this._app.get("/searchInterview", basicAuth, searchAllInterview)
+        this._app.get("/searchAllInterviews", basicAuth, searchAllInterview)
         this._app.get("/searchInterview/:user", basicAuth, searchUserInterviews )
 
     }

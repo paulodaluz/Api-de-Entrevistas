@@ -6,7 +6,15 @@ import { Interview } from "../entity/Interview";
 var err = new Error();
 
 export async function newInterview (request: Request, response: Response) {
-    response.send("ok")
+    const interviewRepository = getManager().getRepository(Interview);
+
+    //const newInterview = await createInterview(request)
+    const newInterview = await interviewRepository.create(request.body)
+
+
+    await interviewRepository.save(newInterview)
+    response.status(201).send(newInterview)
+
 }
 
 export async function deleteInterview(request: Request, response: Response) {
@@ -15,7 +23,7 @@ export async function deleteInterview(request: Request, response: Response) {
 
 export async function searchAllInterview(request: Request, response: Response) {
     const interviewRepository = getManager().getRepository(Interview);
-    const interviews = await interviewRepository.find({relations:["user"]});
+    const interviews = await interviewRepository.find({relations:["entrevistador"]});
 
     if (!interviews.length) {
         response.status(400).json({msg: "Nenhuma entrevista cadastrada"});
@@ -29,3 +37,4 @@ export async function searchUserInterviews(request: Request, response: Response)
 //Olhar aprenas de um determiando usuário
     response.send("ok")
 }
+
