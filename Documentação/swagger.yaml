@@ -1,0 +1,665 @@
+swagger: '2.0'
+schemes:
+  - http
+  - https
+host: 'localhost:3001'
+basePath: /user
+info:
+  version: 1.0.0
+  title: API de Entrevistas
+  description: >-
+    API que auxilia em entrevistas e na avaliação do candidato, conta com 
+  termsOfService: 'http://localhost:3001/termo-uso'
+  contact:
+    name: Suporte
+    url: 'http://localhost:3001/suporte'
+    email: suporte@interviews.com
+securityDefinitions:
+  BasicAuth:
+    type: basic
+security:
+  - BasicAuth: []
+consumes:
+  - application/json
+produces:
+  - application/json
+tags:
+  - name: Cria Usuário
+  - name: Cria Entrevista
+  - name: Edita Entrevista
+  - name: Deleta Entrevista
+  - name: Busca Entrevistas
+paths:
+  '/user':
+    post:
+      tags:
+        - Cria Usuário
+      summary: Cria Usuário
+      description: Cria um novo usuário para poder acessar a API.
+      parameters:
+        - in: path
+          name: username
+          type: string
+          required: true
+        - in: path
+          name: password
+          type: string
+          required: true
+        - in: path
+          name: write
+          type: boolean
+          required: true
+        - in: path
+          name: read
+          type: boolean
+          required: true
+      responses:
+        '200':
+          description: Usuário criado com sucesso!
+        '400':
+          description: Erros de validação encontrados.
+        '500':
+          description: Erro interno no servidor.
+  '/newInterview':
+    post:
+      tags:
+        - Cria Entrevista
+      summary: Cria Entrevista
+      description: Cria uma nova entrevista de emprego.
+      parameters:
+        - in: path
+          name: candidato
+          type: string
+          required: true
+        - in: path
+          name: statusAvaliacao
+          type: string
+          required: true
+        - in: path
+          name: disponibilidade
+          type: string
+          required: true
+        - in: path
+          name: pretensao
+          type: string
+          required: true
+        - in: path
+          name: dataEntrevista
+          type: string
+          required: true
+        - in: path
+          name: conhecimentoVaga
+          type: string
+          required: true
+        - in: path
+          name: conhecidos
+          type: string
+          required: true
+        - in: path
+          name: idade
+          type: number
+          required: true
+        - in: path
+          name: cidade
+          type: string
+          required: true
+        - in: path
+          name: mudancaCidade
+          type: string
+          required: true
+        - in: path
+          name: escolaridade
+          type: string
+          required: true
+        - in: path
+          name: instituicoes
+          type: string
+          required: true
+        - in: path
+          name: nivelIngles
+          type: number
+          required: true
+        - in: path
+          name: empregoAtual
+          type: string
+          required: true
+        - in: path
+          name: setorPretendido
+          type: string
+          required: true
+        - in: path
+          name: setorEnquadrado
+          type: string
+          required: true
+        - in: path
+          name: java
+          type: number
+          required: true
+        - in: path
+          name: jee
+          type: number
+          required: true
+        - in: path
+          name: python
+          type: number
+          required: true
+        - in: path
+          name: ruby
+          type: number
+          required: true
+        - in: path
+          name: javascript
+          type: number
+          required: true
+        - in: path
+          name: sql
+          type: number
+          required: true
+        - in: path
+          name: plsql
+          type: number
+          required: true
+        - in: path
+          name: htmlCSS
+          type: number
+          required: true
+        - in: path
+          name: tecnologiasAdd
+          type: string
+          required: true
+        - in: path
+          name: resumo
+          type: string
+          required: true
+        - in: path
+          name: contratarPros
+          type: string
+          required: true
+        - in: path
+          name: contratarContras
+          type: string
+          required: true
+        - in: path
+          name: observacoes
+          type: string
+          required: true
+      responses:
+        '201':
+          description: Entrevista criada com sucesso.
+          schema:
+            $ref: '#/definitions/Entrevista'
+        '400':
+          description: Erros de validação encontrados.
+        '500':
+          description: Erro interno no servidor.
+  '/editInterview/{id}':
+    put:
+      tags:
+        - Edita Entrevista
+      summary: Altera os dados de uma entrevista.
+      description: Edita os dados de uma entrevista existente.
+      parameters:
+        - in: path
+          name: id
+          type: integer
+          format: int64
+          required: true
+        - in: path
+          name: candidato
+          type: string
+          required: true
+        - in: path
+          name: statusAvaliacao
+          type: string
+          required: true
+        - in: path
+          name: disponibilidade
+          type: string
+          required: true
+        - in: path
+          name: pretensao
+          type: string
+          required: true
+        - in: path
+          name: dataEntrevista
+          type: string
+          required: true
+        - in: path
+          name: conhecimentoVaga
+          type: string
+          required: true
+        - in: path
+          name: conhecidos
+          type: string
+          required: true
+        - in: path
+          name: idade
+          type: number
+          required: true
+        - in: path
+          name: cidade
+          type: string
+          required: true
+        - in: path
+          name: mudancaCidade
+          type: string
+          required: true
+        - in: path
+          name: escolaridade
+          type: string
+          required: true
+        - in: path
+          name: instituicoes
+          type: string
+          required: true
+        - in: path
+          name: nivelIngles
+          type: number
+          required: true
+        - in: path
+          name: empregoAtual
+          type: string
+          required: true
+        - in: path
+          name: setorPretendido
+          type: string
+          required: true
+        - in: path
+          name: setorEnquadrado
+          type: string
+          required: true
+        - in: path
+          name: java
+          type: number
+          required: true
+        - in: path
+          name: jee
+          type: number
+          required: true
+        - in: path
+          name: python
+          type: number
+          required: true
+        - in: path
+          name: ruby
+          type: number
+          required: true
+        - in: path
+          name: javascript
+          type: number
+          required: true
+        - in: path
+          name: sql
+          type: number
+          required: true
+        - in: path
+          name: plsql
+          type: number
+          required: true
+        - in: path
+          name: htmlCSS
+          type: number
+          required: true
+        - in: path
+          name: tecnologiasAdd
+          type: string
+          required: true
+        - in: path
+          name: resumo
+          type: string
+          required: true
+        - in: path
+          name: contratarPros
+          type: string
+          required: true
+        - in: path
+          name: contratarContras
+          type: string
+          required: true
+        - in: path
+          name: observacoes
+          type: string
+          required: true
+      responses:
+        '201':
+          description: Entrevista editada com sucesso.
+          schema:
+            $ref: '#/definitions/Entrevista'
+        '400':
+          description: ID inválido.
+        '500':
+          description: Erro no servidor.
+  '/deleteInterview/{id}':
+    delete:
+      tags:
+        - Deleta Entrevista
+      summary: Exclui uma entrevista
+      description: Transfere a entrevista para uma nova tabela de entrevistas deletadas e apaga da tabela principal.
+      parameters:
+        - in: path
+          name: id
+          type: integer
+          format: int64
+          required: true
+      responses:
+        '204':
+          description: Entrevista excluida com sucesso.
+        '400':
+          description: Requisição inválida.
+        '404':
+          description: ID não encontrado.
+        '500':
+          description: Erro no servidor.
+  '/searchInterview/{user}':
+    get:
+      tags:
+        - Busca Entrevistas
+      summary: Busca entrevistas de um determinado usuário
+      description: Busca entrevista de um usuário.
+      parameters:
+        - in: path
+          name: user
+          type: string
+          required: true
+      responses:
+        '200':
+          description: Consulta a entrevistas efetuada com sucesso.
+          schema:
+            $ref: '#/definitions/Entrevista'
+        '204':
+          description: Nenhuma entrevista foi encontrada.
+        '400':
+          description: Requisição inválida.
+        '500':
+          description: Erro no servidor.
+  '/searchInterview':
+    get:
+      tags:
+        - Busca Entrevistas
+      summary: Busca entrevistas próprias
+      description: Busca todas as entrevistas feitas pelo usuário que está acessando a página.
+      responses:
+        '200':
+          description: Consulta a entrevistas efetuada com sucesso.
+          schema:
+            $ref: '#/definitions/Entrevista'
+        '204':
+          description: Nenhuma entrevista foi encontrada.
+        '400':
+          description: Requisição inválida.
+        '500':
+          description: Erro no servidor.
+  '/searchAllInterviews':
+    get:
+      tags:
+        - Busca Entrevistas
+      summary: Lista todas as entrevistas
+      description: Listar todas as entrevistas existentes no banco de dados.
+      responses:
+        '200':
+          description: Consulta a entrevistas efetuada com sucesso.
+          schema:
+            $ref: '#/definitions/Entrevista'
+        '204':
+          description: Nenhuma entrevista foi encontrada.
+        '400':
+          description: Requisição inválida.
+        '500':
+          description: Erro no servidor.
+  '/AllInterviewsDeleted':
+    get:
+      tags:
+        - Busca Entrevistas
+      summary: Lista todas as entrevistas apagadas
+      description: Listar todas as entrevistas apagadas no banco de dados que foram realocadas em outra tabela com apenas as entrevistas deletadas.
+      responses:
+        '200':
+          description: Consulta a entrevistas efetuada com sucesso.
+          schema:
+            $ref: '#/definitions/EntrevistaDeletada'
+        '204':
+          description: Nenhuma entrevista foi encontrada.
+        '400':
+          description: Requisição inválida.
+        '500':
+          description: Erro no servidor.
+definitions:
+  Entrevista:
+    type: object
+    properties:
+      id:
+        type: integer
+        format: int64
+        example: 234
+      entrevistador:
+        type: string
+        example: ""
+      candidato:
+        type: string
+        example: João
+      statusAvaliacao:
+        type: string
+        example: "Definitivamente contratar"
+      disponibilidade:
+        type: string
+        example: "Total"
+      pretensao:
+        type: string
+        example: "Desenvolvimento"      
+      dataEntrevista:
+        type: string
+        example: "02/04/2019"
+      conhecimentoVaga:
+        type: string
+        example: "Python básico e Java Script intermediário"
+      conhecidos:
+        type: string
+        example: ""
+      idade:
+        type: string
+        example: ""
+      cidade:
+        type: string
+        example: ""
+      mudancaCidade:
+        type: string
+        example: ""
+      escolaridade: 
+        type: string
+        example: ""
+      instituicoes:
+        type: string
+        example: ""
+      nivelIngles:
+        type: number
+        minLength: 10
+        maxLength: 12
+        example: 1
+      empregoAtual:
+        type: string
+        example: ""
+      setorPretendido:
+        type: string
+        example: ""
+      setorEnquadrado:
+        type: string
+        example: ""
+      java:
+        type: number
+        minLength: 10
+        maxLength: 12
+        example: 1
+      jee:
+        type: number
+        minLength: 10
+        maxLength: 12
+        example: 1
+      python:
+        type: number
+        minLength: 10
+        maxLength: 12
+        example: 1
+      ruby:
+        type: number
+        minLength: 10
+        maxLength: 12
+        example: 1
+      javascript:
+        type: number
+        minLength: 10
+        maxLength: 12
+        example: 1
+      sql:
+        type: number
+        minLength: 10
+        maxLength: 12
+        example: 1
+      plsql:
+        type: number
+        minLength: 10
+        maxLength: 12
+        example: 1
+      htmlCSS:
+        type: number
+        minLength: 10
+        maxLength: 12
+        example: 1
+      tecnologiasAdd:
+        type: string
+        example: ""
+      resumo:
+        type: string
+        example: ""
+      contratarPros:
+        type: string
+        example: ""
+      contratarContras:
+        type: string
+        example: ""
+      observacoes:
+        type: string
+        example: ""
+      dataDeEdicao:
+        type: string
+        example: ""
+  EntrevistaDeletada:
+    type: object
+    properties:
+      id:
+        type: integer
+        format: int64
+        example: 234
+      entrevistador:
+        type: string
+        example: ""
+      usuarioExcluidor:
+        type: string
+        example: ""
+      candidato:
+        type: string
+        example: João
+      statusAvaliacao:
+        type: string
+        example: "Definitivamente contratar"
+      disponibilidade:
+        type: string
+        example: "Total"
+      pretensao:
+        type: string
+        example: "Desenvolvimento"      
+      dataEntrevista:
+        type: string
+        example: "02/04/2019"
+      conhecimentoVaga:
+        type: string
+        example: "Python básico e Java Script intermediário"
+      conhecidos:
+        type: string
+        example: ""
+      idade:
+        type: string
+        example: ""
+      cidade:
+        type: string
+        example: ""
+      mudancaCidade:
+        type: string
+        example: ""
+      escolaridade: 
+        type: string
+        example: ""
+      instituicoes:
+        type: string
+        example: ""
+      nivelIngles:
+        type: number
+        minLength: 10
+        maxLength: 12
+        example: 1
+      empregoAtual:
+        type: string
+        example: ""
+      setorPretendido:
+        type: string
+        example: ""
+      setorEnquadrado:
+        type: string
+        example: ""
+      java:
+        type: number
+        minLength: 10
+        maxLength: 12
+        example: 1
+      jee:
+        type: number
+        minLength: 10
+        maxLength: 12
+        example: 1
+      python:
+        type: number
+        minLength: 10
+        maxLength: 12
+        example: 1
+      ruby:
+        type: number
+        minLength: 10
+        maxLength: 12
+        example: 1
+      javascript:
+        type: number
+        minLength: 10
+        maxLength: 12
+        example: 1
+      sql:
+        type: number
+        minLength: 10
+        maxLength: 12
+        example: 1
+      plsql:
+        type: number
+        minLength: 10
+        maxLength: 12
+        example: 1
+      htmlCSS:
+        type: number
+        minLength: 10
+        maxLength: 12
+        example: 1
+      tecnologiasAdd:
+        type: string
+        example: ""
+      resumo:
+        type: string
+        example: ""
+      contratarPros:
+        type: string
+        example: ""
+      contratarContras:
+        type: string
+        example: ""
+      observacoes:
+        type: string
+        example: ""
+      dataExclusao:
+        type: string
+        example: ""
