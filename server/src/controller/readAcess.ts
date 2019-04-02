@@ -1,6 +1,6 @@
 import {getManager} from "typeorm";
-import { User } from '../entity/User'
-import { Error } from '../models/Errors'
+import { User } from '../entity/User';
+import { Error } from '../models/Errors';
 
 module.exports = async (req, res, next) => {
 

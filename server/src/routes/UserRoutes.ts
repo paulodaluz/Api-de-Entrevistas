@@ -1,4 +1,4 @@
-import { SaveUser } from '../controller/UserController'
+import { SaveUser } from '../controller/UserController';
 
 
 export default class UserRouter {
@@ -16,4 +16,4 @@ export default class UserRouter {
             .post(SaveUser)
 
     }
-} 
+}

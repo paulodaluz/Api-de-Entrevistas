@@ -1,8 +1,8 @@
 import { newInterview, editInterview, deleteInterview, searchAllInterview, searchUserInterviews, allInterviewsDeleted } from "../controller/InterviewController";
 
 const basicAuth = require('../controller/BasicAuth');
-const writeAcess = require('../controller/writeAcess')
-const readAcess = require('../controller/readAcess')
+const writeAcess = require('../controller/writeAcess');
+const readAcess = require('../controller/readAcess');
 export default class InterviewRouter {
 
     _app;

@@ -1,7 +1,7 @@
-import { createConnection } from 'typeorm'
-import UserRoutes from './UserRoutes'
-import InterviewRoutes from './InterviewRoutes'
-import { Error } from '../models/Errors'
+import { createConnection } from 'typeorm';
+import UserRoutes from './UserRoutes';
+import InterviewRoutes from './InterviewRoutes';
+import { Error } from '../models/Errors';
 
 
 export default (app:any) => {

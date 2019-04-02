@@ -1,6 +1,6 @@
-import { FindUser } from './UserController'
-const bcrypt = require('bcrypt')
-import { Error } from '../models/Errors'
+import { FindUser } from './UserController';
+const bcrypt = require('bcrypt');
+import { Error } from '../models/Errors';
 
 
 async function _authenticate({ username, password }) {
