@@ -8,7 +8,7 @@ info:
   version: 1.0.0
   title: API de Entrevistas
   description: >-
-    API que auxilia em entrevistas e na avaliação do candidato, conta com 
+    API que auxilia em entrevistas e na avaliação de candidatos em uma entrevista. 
   termsOfService: 'http://localhost:3001/termo-uso'
   contact:
     name: Suporte
