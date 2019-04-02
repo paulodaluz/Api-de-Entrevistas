@@ -29,8 +29,10 @@
     "bcrypt": "^3.0.5",
     "body-parser": "^1.18.2",
     "concurrently": "^4.1.0",
+    "cors": "^2.8.5",
     "express": "^4.16.3",
     "express-validator": "^5.3.1",
+    "morgan": "^1.9.1",
     "mysql": "^2.15.0",
     "nodemon": "^1.18.10",
     "typeorm": "^0.2.0"

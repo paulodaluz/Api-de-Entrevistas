@@ -107,6 +107,8 @@ export async function deleteInterview(request: Request, response: Response) {
 
 export async function searchAllInterview(request: Request, response: Response) {
 
+    console.log("Buscando entrevistas")
+
     const interviewRepository = getManager().getRepository(Interview);
     const interviews = await interviewRepository.find({relations:["entrevistador"]});
 
