@@ -12,19 +12,19 @@
         <md-icon>library_books</md-icon>
         <p>Entrevistas</p>
       </sidebar-link>
-      <sidebar-link to="/">
+      <sidebar-link to="/typography">
         <md-icon>content_paste</md-icon>
         <p>Criar Entrevista</p>
       </sidebar-link>
-      <sidebar-link to="/">
+      <sidebar-link to="/typography">
         <md-icon>content_paste</md-icon>
         <p>Editar Entrevista</p>
       </sidebar-link>
-      <sidebar-link to="/">
+      <sidebar-link to="/typography">
         <md-icon>content_paste</md-icon>
         <p>Excluir Entrevista</p>
       </sidebar-link>
-      <sidebar-link to="/">
+      <sidebar-link to="/typography">
         <md-icon>delete</md-icon>
         <p>Entrevistas Excluidas</p>
       </sidebar-link>

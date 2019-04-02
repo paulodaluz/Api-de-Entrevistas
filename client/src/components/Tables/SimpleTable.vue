@@ -1,5 +1,5 @@
 <template>
-  <div v-if="interviews.length > 88" class="table-wrap">
+  <div v-if="interviews.length > 0" class="table-wrap">
     <md-table v-model="interviews" :table-header-color="tableHeaderColor">
       <md-table-row slot="md-table-row" slot-scope="{ item }">
         <md-table-cell md-label="ID">{{ item.id }}</md-table-cell>
