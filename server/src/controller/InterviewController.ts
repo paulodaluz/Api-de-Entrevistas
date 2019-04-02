@@ -134,3 +134,7 @@ export async function searchUserInterviews(request: Request, response: Response)
     
     response.status(200).json(interviews)
 }
+
+export async function allInterviewsDeleted(request: Request, response: Response) {
+    response.send("ok")
+}
