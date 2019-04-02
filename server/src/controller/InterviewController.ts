@@ -136,5 +136,16 @@ export async function searchUserInterviews(request: Request, response: Response)
 }
 
 export async function allInterviewsDeleted(request: Request, response: Response) {
-    response.send("ok")
+
+    console.log("Buscando entrevistas")
+
+    const interviewDeletedRepository = getManager().getRepository(InterviewDeleted);
+    const interviews = await interviewDeletedRepository.find({ relations: ["entrevistador"] });
+
+    if (!interviews.length) {
+        response.status(400).json({ msg: "Nenhuma entrevista deletada" });
+        response.end();
+        return;
+    }
+    response.send(interviews);
 }
