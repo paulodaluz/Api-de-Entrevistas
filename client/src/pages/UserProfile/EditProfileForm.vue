@@ -32,10 +32,10 @@
           </div>
           <div class="md-layout-item md-small-size-100 md-size-30">
               <md-input v-model="read" type="checkbox" id="read"></md-input>
-              <label for="write">Permissão de Leitura</label>
+              <label for="read">Permissão de Leitura</label>
           </div>
           <div class="md-layout-item md-size-100 text-right">
-            <md-button class="md-raised md-success">Update Profile</md-button>
+            <md-button class="md-raised md-success" @click="addUser">Criar Usuário</md-button>
           </div>
         </div>
       </md-card-content>
@@ -43,6 +43,7 @@
   </form>
 </template>
 <script>
+import InterviewService from "@/services/InterviewService";
 export default {
   name: "edit-profile-form",
   props: {
@@ -53,18 +54,21 @@ export default {
   },
   data() {
     return {
-      username: null,
-      disabled: null,
-      emailadress: null,
-      lastname: null,
-      firstname: null,
-      address: null,
-      city: null,
-      country: null,
-      code: null,
-      aboutme:
-        "Lamborghini Mercy, Your chick she so thirsty, I'm in that two seat Lambo."
+      username: "",
+      password: "",
+      write: false,
+      read: false
     };
+  }, methods: {
+    async addUser () {
+      const user = await InterviewService.createUser({
+        username: this.username,
+        password: this.password,
+        write: this.write,
+        read: this.read
+      })
+    console.log(user)
+    }
   }
 };
 </script>
