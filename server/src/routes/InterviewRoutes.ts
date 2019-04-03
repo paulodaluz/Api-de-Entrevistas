@@ -17,7 +17,7 @@ export default class InterviewRouter {
         this._app.post("/newInterview", newInterview );
         this._app.put("/editInterview/:id", basicAuth, writeAcess,editInterview );
         this._app.delete("/deleteInterview/:id", basicAuth, writeAcess,deleteInterview );
-        this._app.get("/searchAllInterviews", searchAllInterview);
+        this._app.get("/searchAllInterviews", basicAuth, searchAllInterview);
         this._app.get("/searchInterview/:user", basicAuth, readAcess,searchUserInterviews );
         this._app.get("/searchInterview", basicAuth, searchUserInterviews );
         this._app.get("/allInterviewsDeleted", basicAuth, allInterviewsDeleted );

@@ -29,6 +29,7 @@ export async function SaveUser(request: Request, response: Response) {
     newUser.username = request.body.username
     newUser.password = hash
     newUser.write = request.body.write
+    newUser.fullname = request.body.fullname
     if(request.body.write){
         newUser.read = true
     }else{

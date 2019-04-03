@@ -34,6 +34,12 @@ export default {
   mounted() {
     this.getAllInterviews();
   },
+  options :{
+    headers: 
+        {
+            Authorization: 'Basic dXN1YXJpbzpzZW5oYQ=='
+        }
+  },
   methods: {
     async getAllInterviews() {
       const response = await InterviewService.fetchInterviews();
