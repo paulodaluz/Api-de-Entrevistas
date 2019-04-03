@@ -298,7 +298,7 @@
 <script>
 import InterviewService from "@/services/InterviewService";
 export default {
-  name: "create-interview-form",
+  name: "formulario-entrevista",
   props: {
     dataBackgroundColor: {
       type: String,

@@ -30,11 +30,11 @@
           </div>
 
           <div class="md-layout-item md-small-size-100 md-size-30">
-              <md-checkbox v-model="write" value="1">Permissão de Escrita</md-checkbox>
+              <md-checkbox v-model="write" true-value=true false-value=false>Permissão de Escrita</md-checkbox>
           </div>
 
           <div class="md-layout-item md-small-size-100 md-size-30">
-              <md-checkbox v-model="read" value="1">Permissão de Leitura</md-checkbox>
+              <md-checkbox v-model="read" true-value=true false-value=false>Permissão de Leitura</md-checkbox>
           </div>
         </div>
       </md-card-content>

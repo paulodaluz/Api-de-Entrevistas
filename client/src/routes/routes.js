@@ -5,7 +5,7 @@ import UserProfile from "@/pages/UserProfile.vue";
 import TableList from "@/pages/TableList.vue";
 import Typography from "@/pages/Typography.vue";
 import Icons from "@/pages/Icons.vue";
-import Maps from "@/pages/Maps.vue";
+import FormularioEntrevista from "@/pages/FormularioEntrevista.vue"
 import Notifications from "@/pages/Notifications.vue";
 import UpgradeToPRO from "@/pages/UpgradeToPRO.vue";
 
@@ -41,12 +41,9 @@ const routes = [
         component: Icons
       },
       {
-        path: "maps",
+        path: "novaEntrevista",
         name: "Maps",
-        meta: {
-          hideFooter: true
-        },
-        component: Maps
+        component: FormularioEntrevista
       },
       {
         path: "notifications",

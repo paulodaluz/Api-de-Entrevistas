@@ -11,8 +11,8 @@
     </md-table>
   </div>
   <div v-else>
-    Não há nenhum curriculo cadastrado <br /><br />
-    <a href="http://www.novocurriculo.com.br/">Novo Currriculo</a>
+    Não há nenhuma entrevista cadastrada <br /><br />
+    <a href="/#/novaEntrevista">Nova Entrevista</a>
   </div>
 </template>
 
