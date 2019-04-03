@@ -14,36 +14,44 @@
               <md-input v-model="username" type="text"></md-input>
             </md-field>
           </div>
+
           <div class="md-layout-item md-small-size-100 md-size-95">
             <md-field>
               <label>Senha</label>
               <md-input v-model="password" type="password"></md-input>
             </md-field>
           </div>
+
           <div class="md-layout-item md-small-size-100 md-size-95">
             <md-field>
               <label>Nome Completo</label>
               <md-input v-model="fullname" type="text"></md-input>
             </md-field>
           </div>
+
           <div class="md-layout-item md-small-size-100 md-size-30">
-              <md-input v-model="write" type="checkbox" id="write"></md-input>
-              <label for="write">Permissão de Escrita</label>
+              <md-checkbox v-model="write" value="1">Permissão de Escrita</md-checkbox>
           </div>
+
           <div class="md-layout-item md-small-size-100 md-size-30">
-              <md-input v-model="read" type="checkbox" id="read"></md-input>
-              <label for="read">Permissão de Leitura</label>
-          </div>
-          <div class="md-layout-item md-size-100 text-right">
-            <md-button class="md-raised md-success" @click="addUser">Criar Usuário</md-button>
+              <md-checkbox v-model="read" value="1">Permissão de Leitura</md-checkbox>
           </div>
         </div>
       </md-card-content>
+
+      <md-card-actions>
+          <div class="md-layout-item md-size-100 text-right">
+            <md-button class="md-raised md-success" @click="addUser">Criar Usuário</md-button>
+          </div>
+      </md-card-actions>
     </md-card>
+
+    <md-snackbar :md-active.sync="userSaved">O usuário{{ lastUser }} foi salvo com sucesso!</md-snackbar>
+    <md-snackbar :md-active.sync="error">{{ erro }}</md-snackbar>
   </form>
 </template>
 <script>
-import InterviewService from "@/services/InterviewService";
+import axios from "axios";
 export default {
   name: "edit-profile-form",
   props: {
@@ -56,19 +64,47 @@ export default {
     return {
       username: "",
       password: "",
+      fullname: "",
       write: false,
-      read: false
+      read: false,
+      userSaved: null,
+      lastUser: null,
+      error: null,
+      erro: null
     };
-  }, methods: {
-    async addUser () {
-      const user = await InterviewService.createUser({
-        username: this.username,
-        password: this.password,
-        write: this.write,
-        read: this.read
+  },
+  methods: {
+    
+    async addUser() {
+      await axios({
+        method: 'post', 
+        url: 'http://localhost:3001/user', 
+        data: {
+          username: this.username,
+          password: this.password,
+          fullname: this.fullname,
+          write: this.write,
+          read: this.read
+        }
       })
-    console.log(user)
-    }
+      .then(response => {
+        this.lastUser = response.data.username;
+        this.userSaved = true;
+        this.clearForm();
+        this.error = false
+      })
+      .catch(error => {
+          this.error = true;
+          this.erro = error.response.data[0].msg;
+      })
+    },
+    clearForm () {
+        this.username = null
+        this.password = null
+        this.fullname = null
+        this.write = false
+        this.read = false
+      }
   }
 };
 </script>
