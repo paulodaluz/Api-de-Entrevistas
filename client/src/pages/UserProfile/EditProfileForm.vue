@@ -46,11 +46,12 @@
       </md-card-actions>
     </md-card>
 
-    <md-snackbar :md-active.sync="userSaved">O usuário {{ lastUser }} foi salvo com sucesso!</md-snackbar>
+    <md-snackbar :md-active.sync="userSaved">O usuário{{ lastUser }} foi salvo com sucesso!</md-snackbar>
+    <md-snackbar :md-active.sync="error">{{ erro }}</md-snackbar>
   </form>
 </template>
 <script>
-import InterviewService from "@/services/InterviewService";
+import axios from "axios";
 export default {
   name: "edit-profile-form",
   props: {
@@ -67,29 +68,42 @@ export default {
       write: false,
       read: false,
       userSaved: null,
-      lastUser: null
+      lastUser: null,
+      error: null,
+      erro: null
     };
   },
   methods: {
+    
     async addUser() {
-      const user = await InterviewService.createUser({
-        username: this.username,
-        password: this.password,
-        fullname: this.fullname,
-        write: this.write,
-        read: this.read
+      await axios({
+        method: 'post', 
+        url: 'http://localhost:3001/user', 
+        data: {
+          username: this.username,
+          password: this.password,
+          fullname: this.fullname,
+          write: this.write,
+          read: this.read
+        }
       })
-      console.log(user);
-      this.lastUser = user.data.username;
-      this.userSaved = true;
-      this.clearForm();
+      .then(response => {
+        this.lastUser = response.data.username;
+        this.userSaved = true;
+        this.clearForm();
+        this.error = false
+      })
+      .catch(error => {
+          this.error = true;
+          this.erro = error.response.data[0].msg;
+      })
     },
     clearForm () {
         this.username = null
         this.password = null
         this.fullname = null
-        this.write = null
-        this.read = null
+        this.write = false
+        this.read = false
       }
   }
 };
