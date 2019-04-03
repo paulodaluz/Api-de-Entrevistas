@@ -9,6 +9,7 @@ export class validation {
         //Data Validation
         request.assert("username", "Nome de usuário é obrigatório.").notEmpty();
         request.assert("password", "Senha é obrigatória.").notEmpty();
+        request.assert("fullname", "O nome completo é obrigatório.").notEmpty();
         request.assert("write", "A função de escrita é necessária e precisa ser respondida com ´´true´´ ou ´´false´´").notEmpty();
         request.assert("read", "A função de leitura é necessária e precisa ser respondida com ´´true´´ ou ´´false´´").notEmpty();
     
