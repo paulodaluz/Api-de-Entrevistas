@@ -27,12 +27,10 @@
             </md-field>
           </div>
           <div class="md-layout-item md-small-size-100 md-size-30">
-              <md-input v-model="write" type="checkbox" id="write"></md-input>
-              <label for="write">Permissão de Escrita</label>
+              <md-checkbox v-model="write" value="1">Permissão de Escrita</md-checkbox>
           </div>
           <div class="md-layout-item md-small-size-100 md-size-30">
-              <md-input v-model="read" type="checkbox" id="read"></md-input>
-              <label for="read">Permissão de Leitura</label>
+              <md-checkbox v-model="read" value="1">Permissão de Leitura</md-checkbox>
           </div>
           <div class="md-layout-item md-size-100 text-right">
             <md-button class="md-raised md-success" @click="addUser">Criar Usuário</md-button>
@@ -59,15 +57,15 @@ export default {
       write: false,
       read: false
     };
-  }, methods: {
-    async addUser () {
-      const user = await InterviewService.createUser({
+  },
+  methods: {
+    async addUser() {
+      await InterviewService.createUser({
         username: this.username,
         password: this.password,
         write: this.write,
         read: this.read
-      })
-    console.log(user)
+      });
     }
   }
 };

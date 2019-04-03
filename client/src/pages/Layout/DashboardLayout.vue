@@ -12,7 +12,7 @@
         <md-icon>library_books</md-icon>
         <p>Entrevistas</p>
       </sidebar-link>
-      <sidebar-link to="/typography">
+      <sidebar-link to="/maps">
         <md-icon>content_paste</md-icon>
         <p>Criar Entrevista</p>
       </sidebar-link>
