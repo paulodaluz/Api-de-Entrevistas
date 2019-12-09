@@ -3,3 +3,5 @@ src/**/*.js
 src/**/*.js.map
 build
 logs
+package-lock.json
+yarn.lock
